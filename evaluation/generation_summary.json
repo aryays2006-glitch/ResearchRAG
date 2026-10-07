@@ -1,0 +1,11 @@
+{
+    "questions_evaluated": 20,
+    "average_faithfulness": 0.8800000000000001,
+    "average_answer_relevance": 0.9,
+    "average_citation_correctness": 0.79,
+    "average_overall_score": 0.8566666666666667,
+    "passed_questions": 14,
+    "failed_questions": 6,
+    "pass_rate": 0.7,
+    "threshold": 0.8
+}

@@ -1,0 +1,145 @@
+[
+    {
+      "question": "Why is self-attention better than recurrent networks?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p6_c1",
+        "Attention Is All You Need_p6_c2"
+      ],
+      "reference_answer": "Self-attention can be computed with fewer sequential operations than recurrent networks and can connect all positions in a sequence with a constant number of operations, making it easier to learn long-range dependencies."
+    },
+    {
+      "question": "What is the main architecture proposed in the paper?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p3_c1"
+      ],
+      "reference_answer": "The paper proposes the Transformer architecture, which uses stacked self-attention and point-wise fully connected layers for the encoder and decoder."
+    },
+    {
+      "question": "What are the two most commonly used attention functions mentioned in the paper?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p4_c1"
+      ],
+      "reference_answer": "The two most commonly used attention functions are additive attention and dot-product, or multiplicative, attention."
+    },
+    {
+      "question": "What is multi-head attention?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p4_c1",
+        "Attention Is All You Need_p5_c1"
+      ],
+      "reference_answer": "Multi-head attention consists of several attention layers running in parallel and allows the model to jointly attend to information from different representation subspaces at different positions."
+    },
+    {
+      "question": "What is the computational complexity of self-attention compared with recurrent layers?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p6_c1",
+        "Attention Is All You Need_p6_c2"
+      ],
+      "reference_answer": "Self-attention has per-layer complexity O(n²d), while recurrent layers have complexity O(nd²). Self-attention also requires O(1) sequential operations compared with O(n) for recurrent layers."
+    },
+    {
+      "question": "What is the encoder-decoder structure used by the Transformer?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p2_c2"
+      ],
+      "reference_answer": "The encoder maps an input sequence to continuous representations, while the decoder generates an output sequence one element at a time."
+    },
+    {
+      "question": "How many identical layers are used in the Transformer encoder?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p3_c1"
+      ],
+      "reference_answer": "The Transformer encoder is composed of a stack of six identical layers."
+    },
+    {
+      "question": "What are the two sub-layers in each Transformer encoder layer?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p3_c1"
+      ],
+      "reference_answer": "Each encoder layer contains a multi-head self-attention mechanism and a position-wise fully connected feed-forward network."
+    },
+    {
+      "question": "How does the Transformer use residual connections?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p3_c1"
+      ],
+      "reference_answer": "Residual connections are used around each of the two sub-layers, followed by layer normalization."
+    },
+    {
+      "question": "What is scaled dot-product attention?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p4_c1"
+      ],
+      "reference_answer": "Scaled dot-product attention computes dot products between queries and keys, divides them by the square root of the key dimension, and applies softmax to obtain weights on the values."
+    },
+    {
+      "question": "What are the dimensions of the queries, keys, and values in scaled dot-product attention?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p4_c1"
+      ],
+      "reference_answer": "The queries and keys have dimension d_k, while the values have dimension d_v."
+    },
+    {
+      "question": "How many attention heads does the Transformer use in the paper's base configuration?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p5_c1"
+      ],
+      "reference_answer": "The paper uses eight parallel attention layers, or heads, in the base configuration."
+    },
+    {
+      "question": "What dimensions are used for each attention head in the base Transformer?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p5_c1"
+      ],
+      "reference_answer": "Each attention head uses d_k = d_v = d_model/h = 64."
+    },
+    {
+      "question": "Why does multi-head attention use multiple attention heads?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p5_c1"
+      ],
+      "reference_answer": "Multiple attention heads allow the model to jointly attend to information from different representation subspaces at different positions."
+    },
+    {
+      "question": "What is positional encoding used for in the Transformer?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p6_c1"
+      ],
+      "reference_answer": "Because the Transformer has no recurrence or convolution, positional encodings are added to the input embeddings so the model can use information about the order of tokens."
+    },
+    {
+      "question": "How does restricted self-attention reduce the computational cost for very long sequences?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p7_c1"
+      ],
+      "reference_answer": "Restricted self-attention considers only a neighborhood of size r around each output position, reducing the amount of computation for very long sequences."
+    },
+    {
+      "question": "Why can convolutional layers require longer paths between positions than self-attention?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p7_c1"
+      ],
+      "reference_answer": "A single convolutional layer does not connect all input and output positions, so multiple convolutional layers may be required to connect distant positions."
+    },
+    {
+      "question": "What dropout rate is used in the Transformer base model?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p8_c1"
+      ],
+      "reference_answer": "The Transformer base model uses a dropout rate of 0.1."
+    },
+    {
+      "question": "How did the Transformer compare with previous models on English-to-German translation in the paper?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p8_c1"
+      ],
+      "reference_answer": "The Transformer achieved better BLEU scores than previous state-of-the-art models while requiring a fraction of their training cost."
+    },
+    {
+      "question": "What does the paper show about the Transformer on English constituency parsing?",
+      "expected_chunk_ids": [
+        "Attention Is All You Need_p10_c1"
+      ],
+      "reference_answer": "The results show that the Transformer can perform well on English constituency parsing despite not using task-specific tuning."
+    }
+  ]

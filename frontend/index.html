@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ResearchRAG — Research Intelligence</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+
+    <main class="app-container">
+
+        <!-- NAVBAR -->
+        <nav class="navbar">
+
+            <div class="brand">
+
+                <div class="brand-icon">
+                    R
+                </div>
+
+                <div class="brand-text">
+                    <span class="brand-name">
+                        ResearchRAG
+                    </span>
+
+                    <span class="brand-subtitle">
+                        Research Intelligence
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="system-status">
+                <span class="status-indicator"></span>
+                <span>Local AI</span>
+            </div>
+
+        </nav>
+
+
+        <!-- HERO -->
+        <section class="hero">
+
+            <div class="eyebrow">
+                AI-POWERED RESEARCH ASSISTANT
+            </div>
+
+            <h1>
+                Turn papers into
+                <span>answers.</span>
+            </h1>
+
+            <p class="hero-description">
+                Upload a research paper, ask questions about it,
+                and get grounded answers backed by relevant evidence.
+            </p>
+
+            <div class="technology-pills">
+
+                <span>Hybrid Retrieval</span>
+                <span>BGE Reranking</span>
+                <span>Local LLM</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- UPLOAD CARD -->
+        <section class="upload-card">
+
+            <div class="card-header">
+
+                <div>
+                    <span class="card-label">
+                        STEP 01
+                    </span>
+
+                    <h2>
+                        Upload your research paper
+                    </h2>
+                </div>
+
+                <span class="step-number">
+                    01
+                </span>
+
+            </div>
+
+
+            <div
+                id="dropZone"
+                class="drop-zone"
+            >
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    accept=".pdf,application/pdf"
+                    hidden
+                >
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h3>
+                    Drop your PDF here
+                </h3>
+
+                <p>
+                    or choose a research paper from your computer
+                </p>
+
+                <button
+                    id="chooseFileButton"
+                    class="secondary-button"
+                    type="button"
+                >
+                    Choose PDF
+                </button>
+
+                <div class="file-support">
+                    PDF files only
+                </div>
+
+            </div>
+
+
+            <!-- SELECTED FILE -->
+            <div
+                id="selectedFile"
+                class="selected-file hidden"
+            >
+
+                <div class="file-icon">
+                    PDF
+                </div>
+
+                <div class="file-info">
+
+                    <strong id="fileName">
+                        Research paper
+                    </strong>
+
+                    <span id="fileSize">
+                        Ready to upload
+                    </span>
+
+                </div>
+
+                <button
+                    id="removeFileButton"
+                    class="remove-button"
+                    type="button"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <button
+                id="uploadButton"
+                class="primary-button upload-button hidden"
+                type="button"
+            >
+                <span id="uploadButtonText">
+                    Upload & Process Paper
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+            </button>
+
+
+            <!-- UPLOAD STATUS -->
+            <div
+                id="uploadStatus"
+                class="upload-status hidden"
+            >
+
+                <div
+                    id="uploadSpinner"
+                    class="mini-spinner"
+                ></div>
+
+                <div>
+
+                    <strong id="uploadStatusTitle">
+                        Processing paper
+                    </strong>
+
+                    <p id="uploadStatusText">
+                        Extracting text and building your research index...
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIVE PAPER -->
+            <div
+                id="activePaper"
+                class="active-paper hidden"
+            >
+
+                <div class="check-icon">
+                    ✓
+                </div>
+
+                <div class="active-paper-info">
+
+                    <span class="active-label">
+                        PAPER READY
+                    </span>
+
+                    <strong id="activePaperName">
+                        Research paper
+                    </strong>
+
+                </div>
+
+                <div
+                    id="activePaperMeta"
+                    class="active-paper-meta"
+                >
+                    Ready
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUESTION CARD -->
+        <section class="question-card">
+
+            <div class="card-header">
+
+                <div>
+                    <span class="card-label">
+                        STEP 02
+                    </span>
+
+                    <h2>
+                        Ask your research
+                    </h2>
+                </div>
+
+                <span class="step-number">
+                    02
+                </span>
+
+            </div>
+
+
+            <div class="input-wrapper">
+
+                <textarea
+                    id="question"
+                    placeholder="e.g. What is the main contribution of this paper?"
+                    rows="4"
+                ></textarea>
+
+                <div class="input-footer">
+
+                    <span class="input-hint">
+                        Ask anything about your uploaded paper.
+                    </span>
+
+                    <button
+                        id="askButton"
+                        class="primary-button"
+                        type="button"
+                    >
+
+                        <span id="buttonText">
+                            Ask ResearchRAG
+                        </span>
+
+                        <span class="button-arrow">
+                            →
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOADING -->
+        <section
+            id="loading"
+            class="loading-card hidden"
+        >
+
+            <div class="loading-spinner"></div>
+
+            <div>
+
+                <strong>
+                    Researching your question
+                </strong>
+
+                <p>
+                    Searching, reranking, and generating an answer...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- ERROR -->
+        <section
+            id="error"
+            class="error-card hidden"
+        >
+
+            <div class="error-icon">
+                !
+            </div>
+
+            <div>
+
+                <strong>
+                    Something went wrong
+                </strong>
+
+                <p id="errorMessage">
+                    Unable to complete the request.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- RESULTS -->
+        <section
+            id="result"
+            class="results hidden"
+        >
+
+            <!-- ANSWER -->
+            <div class="answer-card">
+
+                <div class="section-heading">
+
+                    <div class="section-icon">
+                        ✦
+                    </div>
+
+                    <div>
+
+                        <span class="section-label">
+                            RESEARCHRAG
+                        </span>
+
+                        <h2>
+                            Answer
+                        </h2>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="answer"
+                    class="answer-content"
+                ></div>
+
+            </div>
+
+
+            <!-- SOURCES -->
+            <div class="sources-card">
+
+                <div class="section-heading">
+
+                    <div class="section-icon source-icon">
+                        ↗
+                    </div>
+
+                    <div>
+
+                        <span class="section-label">
+                            EVIDENCE
+                        </span>
+
+                        <h2>
+                            Sources
+                        </h2>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="sources"
+                    class="sources-list"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            <div>
+                ResearchRAG
+            </div>
+
+            <div class="footer-divider"></div>
+
+            <div>
+                Hybrid Retrieval · BGE Reranking · Ollama
+            </div>
+
+        </footer>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
